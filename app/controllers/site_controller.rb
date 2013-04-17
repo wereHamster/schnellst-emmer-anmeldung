@@ -26,6 +26,11 @@ class SiteController < ApplicationController
     redirect_to "/"
   end
 
+  def logout
+    cookies.delete("supervisor")
+    redirect_to "/signin"
+  end
+
   def register
     unless id = cookies["supervisor"]
       return redirect_to "/signin"

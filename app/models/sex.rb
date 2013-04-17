@@ -1,10 +1,12 @@
+# encoding: UTF-8
+
 class Sex
   attr_reader :short, :long
 
   def self.all
     [
       Sex.new("K", "Knabe"),
-      Sex.new("M", "Maedchen"),
+      Sex.new("M", "Mädchen"),
     ]
   end
 
