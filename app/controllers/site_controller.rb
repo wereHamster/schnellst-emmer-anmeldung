@@ -19,7 +19,11 @@ class SiteController < ApplicationController
   def signin_action
     if supervisor = Supervisor.find_by_email(params[:email])
     else
-      supervisor = Supervisor.create(params.slice(:email, :name, :school))
+      supervisor = Supervisor.new(params.slice(:email, :name, :school))
+      unless supervisor.save
+        flash["error"] = true
+        return redirect_to "/signin"
+      end
     end
 
     cookies["supervisor"] = supervisor.id

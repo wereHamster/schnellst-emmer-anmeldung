@@ -1,4 +1,10 @@
 <form class="form-horizontal form-signin" method="post">
+  <% if flash["error"] %>
+  <div class="alert alert-error">
+    Alle Felder sind obligatorisch!
+  </div>
+  <% end %>
+
   <h2 class="form-signin-heading">Bitte melden sie sich an</h2>
 
   <div class="control-group">
