@@ -4,6 +4,7 @@ SchnellstEmmerAnmeldung::Application.routes.draw do
   get   "/signin",    to: "site#signin"
   post  "/signin",    to: "site#signin_action"
   get   "/logout",    to: "site#logout"
+  get   "/export",    to: "site#export"
 
   post  "/register",  to: "site#register"
 

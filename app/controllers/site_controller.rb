@@ -64,4 +64,8 @@ class SiteController < ApplicationController
     redirect_to "/"
   end
 
+  def export
+    render text: Athlete.to_csv, content_type: 'Content-Type: text/csv'
+  end
+
 end
