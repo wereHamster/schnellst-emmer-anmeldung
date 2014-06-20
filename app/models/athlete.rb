@@ -9,10 +9,10 @@ class Athlete < ActiveRecord::Base
 
   def self.to_csv(options = {})
     CSV.generate(options) do |csv|
-      csv << column_names + ['lehrperson']
+      csv << column_names + ['lehrperson', 'school']
       all.each do |athlete|
         sup = Supervisor.find_by_id(athlete.supervisor_id)
-        csv << athlete.attributes.values_at(*column_names) + [sup ? sup.name : '']
+        csv << athlete.attributes.values_at(*column_names) + [sup ? sup.name : '', sup ? sup.school : '']
       end
     end
   end
