@@ -33,7 +33,9 @@
   </tbody>
 </table>
 
-<form class="form-horizontal form-new-athlete" method="post" action="/register">
+
+<div class="row form-new-athlete">
+<form class="form-horizontal span7" method="post" action="/register">
   <h2 class="form-heading">Neuen Athleten anmelden</h2>
 
 <% if flash["athlete_save_error"] %>
@@ -91,12 +93,21 @@
     </div>
   </div>
 
-  <div class="rule"></div>
-
   <div class="control-group">
     <div class="controls">
       <button type="submit" class="btn btn-large btn-primary">Anmelden</button>
     </div>
   </div>
-
 </form>
+
+<form class="form-horizontal span5" method="post" action="/finalize">
+  <h2 class="form-heading">Anmeldung abschliessen</h2>
+
+  <p>
+    Nachdem die Anmuldung abgeschlossen ist können sie keine neuen Athleten anmelden.
+  </p>
+
+      <button type="submit" class="btn btn-large btn-primary">Abschliessen</button>
+</form>
+
+</div>

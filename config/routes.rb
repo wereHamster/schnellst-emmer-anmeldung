@@ -8,6 +8,9 @@ SchnellstEmmerAnmeldung::Application.routes.draw do
 
   post  "/register",  to: "site#register"
 
+  post  "/finalize",      to: "site#finalize"
+  get   "/confirmation",  to: "site#confirmation"
+
   delete "/athletes/:athlete", to: "site#deregister"
 
 end

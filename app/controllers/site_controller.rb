@@ -3,7 +3,11 @@ class SiteController < ApplicationController
   def index
     if id = cookies["supervisor"]
       @supervisor = Supervisor.find(id)
-      @athletes   = @supervisor.athletes
+      if @supervisor.locked
+        redirect_to "/confirmation"
+      else
+        @athletes = @supervisor.athletes
+      end
     else
       redirect_to "/signin"
     end
@@ -66,6 +70,27 @@ class SiteController < ApplicationController
 
   def export
     render text: Athlete.to_csv, content_type: 'Content-Type: text/csv'
+  end
+
+  def finalize
+      unless id = cookies["supervisor"]
+        return redirect_to "/signin"
+      end
+
+      supervisor = Supervisor.find(id)
+      supervisor.locked = true
+      supervisor.save
+
+      redirect_to '/confirmation'
+  end
+
+  def confirmation
+      if id = cookies["supervisor"]
+        @supervisor = Supervisor.find(id)
+        @athletes   = @supervisor.athletes
+      else
+        redirect_to "/signin"
+      end
   end
 
 end

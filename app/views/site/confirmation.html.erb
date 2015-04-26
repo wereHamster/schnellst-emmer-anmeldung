@@ -1,0 +1,36 @@
+<h2>Anmuldung erfolgreich abgeschlossen</h2>
+
+<p>
+  Sie haben die folgenden Athleten angemeldet. Sie bekommen nach dem Anmuldeschluss
+  (kurz vor dem Anlass) noch eine Bestätigung per Email.
+  <br>
+  Falls sie Änderungen vornehmen möchten kontaktieren sie bitte
+  <a href="mailto:tomas.carnecky@gmail.com?subject=schnellst emmer 2015">Tomas Carnecky</a>.
+</p>
+
+<table class="table table-striped table-bordered">
+  <thead>
+    <tr>
+      <th>Vorname</th>
+      <th>Nachname</th>
+      <th>Jahrgang</th>
+      <th>Geschlecht</th>
+      <th>Strasse</th>
+      <th>PLZ</th>
+    </tr>
+  </thead>
+
+
+  <tbody>
+    <% @athletes.order("id ASC").each do |athlete| %>
+    <tr>
+      <td><%= athlete.first_name %></td>
+      <td><%= athlete.last_name %></td>
+      <td><%= athlete.birth_cohort %></td>
+      <td><%= athlete.sex %></td>
+      <td><%= athlete.street %></td>
+      <td><%= athlete.postcode %></td>
+    </tr>
+    <% end %>
+  </tbody>
+</table>
