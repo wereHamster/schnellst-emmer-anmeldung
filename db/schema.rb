@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130417115340) do
+ActiveRecord::Schema.define(:version => 20150426081951) do
 
   create_table "athletes", :force => true do |t|
     t.string  "sex"
@@ -24,9 +24,10 @@ ActiveRecord::Schema.define(:version => 20130417115340) do
   end
 
   create_table "supervisors", :force => true do |t|
-    t.string "name"
-    t.string "email"
-    t.string "school"
+    t.string  "name"
+    t.string  "email"
+    t.string  "school"
+    t.boolean "locked"
   end
 
 end
