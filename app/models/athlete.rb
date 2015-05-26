@@ -16,4 +16,8 @@ class Athlete < ActiveRecord::Base
       end
     end
   end
+
+  def sex_long
+      return Sex.all.first{ |s| s.short == sex }.long
+  end
 end
