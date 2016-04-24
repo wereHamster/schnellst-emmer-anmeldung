@@ -2,7 +2,7 @@ class BirthCohort
   attr_reader :year
 
   def self.all
-    (2002 .. 2008).map do |year|
+    (2003 .. 2009).map do |year|
       BirthCohort.new(year)
     end
   end
