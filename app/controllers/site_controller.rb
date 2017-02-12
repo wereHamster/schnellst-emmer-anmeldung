@@ -2,8 +2,10 @@ class SiteController < ApplicationController
 
   def index
     if id = cookies["supervisor"]
-      @supervisor = Supervisor.find(id)
-      if @supervisor.locked
+      @supervisor = Supervisor.find_by_id(id)
+      if @supervisor.nil?
+        redirect_to "/signin"
+      elsif @supervisor.locked
         redirect_to "/confirmation"
       else
         @athletes = @supervisor.athletes
@@ -14,7 +16,7 @@ class SiteController < ApplicationController
   end
 
   def signin
-    if cookies["supervisor"]
+    if cookies["supervisor"] && !Supervisor.find_by_id(cookies["supervisor"]).nil?
       redirect_to "/"
     else
     end
